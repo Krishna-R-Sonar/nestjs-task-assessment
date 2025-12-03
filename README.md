@@ -10,4 +10,5 @@
 ## Start
 ```bash
 docker-compose up -d
+npm run test:e2e
 npm run start:dev
