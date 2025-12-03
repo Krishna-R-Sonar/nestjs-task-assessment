@@ -18,7 +18,6 @@ export class QueryFailedFilter implements ExceptionFilter {
 
     this.logger.error(exception.message, exception.stack);
 
-    // Handle duplicate email
     if (exception.code === '23505') {
       return response.status(HttpStatus.CONFLICT).json({
         statusCode: HttpStatus.CONFLICT,
@@ -26,12 +25,9 @@ export class QueryFailedFilter implements ExceptionFilter {
       });
     }
 
-    // Handle any other DB error gracefully
     return response.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
       statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
       message: 'Database error occurred',
-      // Remove this in production:
-      // error: exception.message
     });
   }
 }
