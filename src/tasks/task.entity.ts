@@ -14,7 +14,6 @@ export class Task {
   @Column()
   description: string;
 
-  // Fixed typo + proper TypeORM enum usage
   @Column({
     type: 'enum',
     enum: ['OPEN', 'IN_PROGRESS', 'DONE'],
